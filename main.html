@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="logo.pnj.png" type="image/png">
+  <title>WorldLink Migration & Visa Consultancy</title>
+  <style>
+    :root{
+      --bg: #0b1020;
+      --card: #141a2a;
+      --accent: #6c8cff;
+      --text: #e7eaf6;
+      --muted: #aab3c5;
+      --radius: 12px;
+      --pad: 1rem;
+    }
+
+    * {box-sizing: border-box;}
+    html, body {margin: 0; padding: 0; background: radial-gradient(circle at 20% -10%, rgba(108,140,255,0.15), transparent 40%), radial-gradient(circle at 100% 0%, rgba(108,140,255,0.10), transparent 40%), #0b1020; color: var(--text); font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; line-height: 1.5;}
+
+    a { color: var(--accent); text-decoration: none; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(10,12,24,0.9);
+      backdrop-filter: saturate(120%) blur(6px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav {
+      max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: bold; letter-spacing: .5px; }
+    .brand img {
+      width: 28px; height: 28px; border-radius: 8px;
+    }
+    nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 16px; align-items: center; }
+    nav li { position: relative; }
+    nav li ul { display: none; position: absolute; top: 100%; left: 0; background: rgba(20,26,42,0.95); border-radius: 8px; padding: 8px 0; min-width: 200px; z-index: 100; }
+    nav li:hover ul { display: block; }
+    nav li ul li { margin: 0; }
+    nav li ul li a { padding: 8px 16px; display: block; color: #fff; }
+    nav li ul li a:hover { background: rgba(108,140,255,0.3); }
+    nav ul li a:active { color: blue; }
+    .button {
+      display:inline-block; padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);
+      color: #fff; background: rgba(108,140,255,0.2); transition: transform .2s;
+    }
+    .button:hover { transform: translateY(-1px); background: rgba(108,140,255,0.35); }
+    .brand span {
+      background: linear-gradient(to right, #ff0000, #0000ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+    .hero {
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 36px; align-items: center; padding: 60px 0 40px;
+    }
+    .hero h1 { font-size: 2.6rem; margin: 0 0 12px; line-height: 1.08; letter-spacing: -0.02em; }
+    .hero p { color: var(--muted); font-size: 1.05rem; max-width: 60ch; }
+    .badge { display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; border:1px solid rgba(255,255,255,0.2); color:#fff; background: rgba(108,140,255,0.25); font-size:.85rem; }
+    .hero-visual {
+      width: 100%; height: 320px; border-radius: var(--radius); background: linear-gradient(135deg, rgba(108,140,255,0.25), rgba(108,255,207,0.15) 60%), #11152b;
+      display: grid; place-items: center; border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: inset 0 0 60px rgba(0,0,0,0.25);
+    }
+
+    section { padding: 40px 0; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+    .card { padding: 16px; border-radius: 12px; background: rgba(20,26,42,0.9); border: 1px solid rgba(255,255,255,0.06); }
+    .card h3 { margin: 0 0 6px; font-size: 1.05rem; }
+    .card p { color: var(--muted); font-size: .95rem; }
+
+    form { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
+    label { font-size: .85rem; color: var(--muted); display: block; margin: 6px 0 4px; }
+    input, textarea { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(16,22,44,0.8); color: #fff; }
+    textarea { grid-column: 1 / -1; min-height: 120px; resize: vertical; }
+    .form-row { display: grid; gap: 8px; }
+
+        footer { padding: 40px 0; color: var(--muted); font-size: .9rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 40px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; }
+        .footer-left { display: flex; flex-direction: column; align-items: flex-start; }
+        .footer-right { display: flex; flex-direction: column; align-items: flex-end; }
+        .footer-buttons { display: flex; gap: 10px; margin-top: 10px; }
+        .footer-buttons a { padding: 8px 12px; background: var(--accent); color: white; text-decoration: none; border-radius: 4px; }
+        .footer-buttons a:hover { background: rgba(108,140,255,0.8); }
+        .copyright { width: 100%; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); }
+
+    @media (max-width: 1024px) {
+      .hero h1 { font-size: 2.2rem; }
+      .hero p { font-size: 1rem; }
+      .hero-visual { height: 300px; }
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding: 40px 0; }
+      .hero-visual { height: 260px; }
+      form { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav { flex-direction: column; gap: 10px; }
+      nav ul { flex-direction: column; gap: 10px; }
+      nav li ul { position: static; display: none; } /* hide dropdowns on mobile for simplicity */
+      .hero { padding: 30px 0; }
+      .hero h1 { font-size: 2rem; }
+      .hero p { font-size: 0.95rem; }
+      .hero-visual { height: 240px; }
+      .grid { grid-template-columns: 1fr; }
+      .card { padding: 12px; }
+      footer { flex-direction: column; align-items: center; text-align: center; }
+      .footer-left, .footer-right { align-items: center; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 1.8rem; }
+      .hero p { font-size: 0.9rem; }
+      .hero-visual { height: 200px; }
+      .button { padding: 8px 12px; font-size: 0.9rem; }
+      .card h3 { font-size: 1rem; }
+      .card p { font-size: 0.9rem; }
+      .container { padding: 0 10px; }
+      .nav { padding: 10px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+      background-color: #141a2a;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 400px;
+      border-radius: 8px;
+      color: white;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<header aria-label="Site header">
+  <div class="nav container">
+    <div class="brand" aria-label="Brand">
+      <img src="logo.pnj.png" alt="Logo">
+      <span>WorldLink Migration & Visa Consultancy</span>
+    </div>
+    <nav aria-label="Main navigation">
+      <ul>
+                <li><a href="main.html" class="button" style="padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.2);">Home</a></li>
+        <li><a href="#services" class="button" style="padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.2);">Services</a>
+          <ul>
+            <li><a href="main.html">Home</a></li>
+            <li><a href="visa-applications.html">Visa Applications</a></li>
+            <li><a href="immigration-advice.html">Immigration Advice</a></li>
+            <li><a href="document-preparation.html">Document Preparation</a></li>
+            <li><a href="consultation-support.html">Consultation & Support</a></li>
+          </ul>
+        </li>
+        <li><a href="#about" class="button" style="padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.2);">About</a>
+          <ul>
+            <li><a href="main.html">Home</a></li>
+            <li><a href="our-story.html">Our Story</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="mission.html">Mission</a></li>
+          </ul>
+        </li>
+        <li><a href="#contact" class="button" style="padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.2);">Contact</a>
+          <ul>
+            <li><a href="main.html">Home</a></li>
+            <li><a href="get-in-touch.html">Get in Touch</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="support.html">Support</a></li>
+          </ul>
+        </li>
+        <li><a href="#study" class="button" style="padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.2);">Study Destination</a>
+          <ul>
+            <li><a href="usa.html">USA</a></li>
+            <li><a href="canada.html">Canada</a></li>
+            <li><a href="uk.html">UK</a></li>
+            <li><a href="australia.html">Australia</a></li>
+            <li><a href="malaysia.html">Malaysia</a></li>
+            <li><a href="china.html">China</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="container" id="top">
+  <section class="hero" aria-label="Intro section">
+    <div>
+      <span class="badge" aria-label="Trusted badge">Trusted Consultancy</span>
+      <h1>Expert Migration and Visa Services for Your Future</h1>
+      <p>Navigate your immigration journey with confidence. We provide comprehensive visa applications, immigration advice, and personalized consultancy to help you achieve your global aspirations.</p>
+      <div style="margin-top: 14px;">
+        <a href="#contact" class="button" style="padding:12px 16px;background: var(--accent);">Get Started</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-label="Decorative visual area">
+      <img src="hero-image.jpg" alt="Migration and Visa Services Illustration" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius);">
+    </div>
+  </section>
+
+  <section id="services" aria-label="Services">
+    <h2 style="margin: 0 0 16px;">Our Services</h2>
+    <p style="color:var(--muted); margin: 0 0 20px;">Comprehensive solutions tailored to your migration needs.</p>
+    <div class="grid">
+      <article class="card" aria-label="Service one">
+        <h3>Visa Applications</h3>
+        <p>Expert assistance with tourist, work, student, and family visas for various countries.</p>
+      </article>
+      <article class="card" aria-label="Service two">
+        <h3>Immigration Advice</h3>
+        <p>Personalized guidance on immigration policies, eligibility, and pathways.</p>
+      </article>
+      <article class="card" aria-label="Service three">
+        <h3>Document Preparation</h3>
+        <p>Help with gathering, verifying, and preparing all necessary documents.</p>
+      </article>
+      <article class="card" aria-label="Service four">
+        <h3>Consultation & Support</h3>
+        <p>Ongoing support throughout your immigration process.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="about" aria-label="About">
+    <h2 style="margin: 0 0 16px;">About Us</h2>
+    <p style="color:var(--muted); margin: 0 0 20px;">WorldLink Migration & Visa Consultancy is dedicated to helping individuals and families achieve their dreams of living and working abroad. With years of experience, we provide reliable and efficient services to make your migration journey smooth and successful.</p>
+  </section>
+
+  <section id="contact" aria-label="Contact form">
+    <h2 style="margin: 0 0 8px;">Get in Touch</h2>
+    <p style="color:var(--muted); margin: 0 0 16px;">Contact us for a consultation and let us guide you through your visa and migration needs.</p>
+    <form action="https://formspree.io/f/xkgpobog" method="POST" aria-label="Contact form">
+      <div class="form-row">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" placeholder="Your name" required />
+      </div>
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required />
+      </div>
+      <div class="form-row">
+        <label for="subject">Subject</label>
+        <input id="subject" name="subject" type="text" placeholder="Subject" />
+      </div>
+      <div class="form-row" style="grid-column: 1 / -1;">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
+      </div>
+      <div style="grid-column: 1 / -1;">
+        <button type="submit" class="button" style="padding:12px 16px;background: var(--accent);">Send Message</button>
+      </div>
+    </form>
+  </section>
+</main>
+
+
+    <footer role="contentinfo" aria-label="Site footer" style="display: flex; justify-content: flex-start; align-items: flex-start; flex-wrap: wrap; padding: 40px 0; color: #aab3c5; font-size: .9rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 40px;">
+      <div style="display: flex; flex-direction: column; align-items: flex-start;">
+        <img src="logo.pnj.png" alt="Logo" style="width: 50px; height: 50px;">
+        <h3>WorldLink Migration & Visa Consultancy</h3>
+        <p>337, Alokar More, New Market Road,<br>Sostitola, Boalia, Rajshahi, Bangladesh</p>
+        <p>📞 +6011 2432 8920</p>
+        <div class="footer-buttons">
+          <a href="https://wa.me/601124328920" target="_blank">WhatsApp</a>
+          <a href="mailto:enuires.worldlinkmigration@gmail.com">Email</a>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: flex-end; margin-left: auto;">
+        <button onclick="openChatModal()" style="padding: 8px 12px; background: #6c8cff; color: white; border: none; border-radius: 4px;">Live Chat</button>
+      </div>
+      <div style="width: 100%; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08);">
+        <p>Copyright © 2025 WorldLink Migration & Visa Consultancy All rights reserved.</p>
+      </div>
+    </footer>
+
+  <div id="chatModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeChatModal()">&times;</span>
+      <h3>Live Chat</h3>
+      <form id="chatForm">
+        <label for="chatName">Name:</label>
+        <input type="text" id="chatName" name="name" required><br><br>
+        <label for="chatMessage">Message:</label>
+        <textarea id="chatMessage" name="message" required></textarea><br><br>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openChatModal() {
+      document.getElementById('chatModal').style.display = 'block';
+    }
+
+    function closeChatModal() {
+      document.getElementById('chatModal').style.display = 'none';
+    }
+
+    document.getElementById('chatForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('chatName').value;
+      const message = document.getElementById('chatMessage').value;
+      alert('Message sent: ' + name + ' - ' + message);
+      closeChatModal();
+    });
+
+    document.querySelector('form[action*="formspree"]').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          form.innerHTML = '<p style="color: #6c8cff; font-size: 1.2rem;">Thanks for contacting us! We will get back to you soon.</p>';
+        } else {
+          alert('There was an error submitting the form. Please try again.');
+        }
+      }).catch(error => {
+        alert('There was an error submitting the form. Please try again.');
+      });
+    });
+  </script>
+</body>
+</html>

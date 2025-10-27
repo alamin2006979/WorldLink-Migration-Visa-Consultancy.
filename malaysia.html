@@ -5,28 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study in Malaysia - WorldLink Migration & Visa Consultancy</title>
     <link rel="icon" href="logo.pnj.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: linear-gradient(to right, #1a1a2e, #16213e); color: white; min-height: 100vh; }
-        header { display: flex; justify-content: space-between; align-items: center; padding: 10px; background-color: rgba(0,0,0,0.8); position: sticky; top: 0; z-index: 1000; }
-        nav ul { display: flex; list-style: none; gap: 20px; margin: 0; padding: 0; }
+        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background: linear-gradient(135deg, #1a1a2e, #16213e, #0f0f23); color: #e0e0e0; min-height: 100vh; line-height: 1.6; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: rgba(0,0,0,0.9); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.5); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        nav ul { display: flex; list-style: none; gap: 15px; margin: 0; padding: 0; }
         nav ul li { position: relative; }
-        nav ul li a { text-decoration: none; color: white; padding: 8px 12px; border-radius: 8px; background: transparent; border: 1px solid rgba(255,255,255,0.2); transition: background 0.3s; }
-        nav ul li a:hover { background: rgba(255,255,255,0.1); }
-        nav ul li a:active { color: blue; }
-        nav ul li ul { display: none; position: absolute; top: 100%; left: 0; background-color: white; border: 1px solid #ccc; padding: 0; margin: 0; list-style: none; min-width: 200px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        nav ul li a { text-decoration: none; color: #e0e0e0; padding: 10px 15px; border-radius: 25px; background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s ease; font-weight: 500; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        nav ul li a:hover { background: linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1)); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+        nav ul li a:active { transform: translateY(0); }
+        nav ul li ul { display: none; position: absolute; top: 100%; left: 0; background: rgba(255,255,255,0.95); border: 1px solid #ddd; padding: 0; margin: 0; list-style: none; min-width: 200px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); border-radius: 10px; }
         nav ul li:hover ul { display: block; }
         nav ul li ul li { padding: 10px; }
-        nav ul li ul li a { color: black; display: block; border: none; background: none; padding: 0; }
-        nav ul li ul li a:hover { background-color: #f0f0f0; }
-        h3 {
-          background: linear-gradient(to right, #ff0000, #0000ff);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+        nav ul li ul li a { color: #333; display: block; border: none; background: none; padding: 8px 15px; border-radius: 5px; }
+        nav ul li ul li a:hover { background: #f0f0f0; color: #007bff; }
+        h1 { font-size: 2.5em; margin-bottom: 20px; text-align: center; background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        h2 { font-size: 1.8em; margin-top: 40px; margin-bottom: 15px; color: #4ecdc4; border-bottom: 3px solid #4ecdc4; padding-bottom: 10px; font-weight: 600; }
+        h3 { font-size: 1.5em; margin-top: 30px; margin-bottom: 10px; color: #ffcc00; font-weight: 600; }
+        .content { max-width: 900px; margin: 30px auto; background: rgba(255,255,255,0.08); padding: 30px; border-radius: 20px; backdrop-filter: blur(15px); box-shadow: 0 10px 40px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); }
+        .content img { max-width: 100%; height: auto; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.2); transition: transform 0.3s; }
+        .content img:hover { transform: scale(1.02); }
+        ul { padding-left: 20px; }
+        ul li { margin-bottom: 10px; position: relative; }
+        ul li::before { content: '▶'; color: #4ecdc4; position: absolute; left: -20px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        table th, table td { padding: 15px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        table th { background: linear-gradient(45deg, #4ecdc4, #45b7d1); color: white; font-weight: 600; }
+        table tr:hover { background: rgba(255,255,255,0.05); }
+        a { color: #4ecdc4; text-decoration: none; transition: color 0.3s; font-weight: 500; }
+        a:hover { color: #ffcc00; text-decoration: underline; }
+        p { margin-bottom: 15px; }
+        .highlight { background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)); padding: 20px; border-left: 5px solid #4ecdc4; margin: 20px 0; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+
+        @media (max-width: 1024px) {
+            .content { padding: 20px; }
+            h1 { font-size: 2.2rem; }
         }
-        .content { max-width: 800px; margin: 20px auto; background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px; backdrop-filter: blur(10px); }
-        a { color: #007bff; text-decoration: none; }
-        a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; padding: 15px; }
+            nav ul { flex-direction: column; gap: 10px; }
+            nav li ul { position: static; display: none; }
+            .content { padding: 15px; margin: 20px auto; }
+            footer { flex-direction: column; align-items: center; text-align: center; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.6rem; }
+            h3 { font-size: 1.3rem; }
+            table th, table td { padding: 10px; font-size: 0.9rem; }
+        }
+
+        @media (max-width: 480px) {
+            nav ul li a { padding: 8px 12px; font-size: 0.9rem; }
+            .content { padding: 10px; }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            h3 { font-size: 1.2rem; }
+            table th, table td { padding: 8px; font-size: 0.8rem; }
+        }
     </style>
 </head>
 <body>
@@ -77,15 +112,236 @@
         </nav>
     </header>
     <div class="content">
-        <h2>Study in Malaysia</h2>
-        <p>Malaysia is a popular destination for international students, offering affordable education, diverse programs, and a multicultural environment. Explore top universities, scholarships, and visa processes for studying in Malaysia.</p>
-        <p>Our consultancy helps with student visa applications, university admissions, and more.</p>
-        <a href="main.html">Back to Home</a>
+        <h1>Study in Malaysia from Bangladesh | Visa - Scholarship - Cost & Admission Process</h1>
+        <img src="agenymalay.png" alt="Agency Image" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px;">
+        <p>Malaysia is one of the most developing countries in the world which has no political conflict and it emerged as a newly industrialized market in Asia. Nowadays Malaysia is one of the best study destinations for students from different parts of the world especially Bangladesh.</p>
+        <p>Every year Malaysia welcomes a huge number of international students from abroad. It is one of the best places in Asia to live in. People from different parts of the world choose Malaysia as their study destination because of its huge facilities.</p>
+
+        <h2>Contact Us</h2>
+        <h2>Study in Malaysia from Bangladesh</h2>
+        <h3>Malaysia in Brief</h3>
+        <ul>
+            <li><strong>Capital:</strong> Kuala Lumpur</li>
+            <li><strong>Largest City:</strong> Kuala Lumpur</li>
+            <li><strong>GDP:</strong> $ 434.059 Billion</li>
+            <li><strong>Universities:</strong> 590</li>
+            <li><strong>Currency:</strong> Ringgit</li>
+            <li><strong>Population:</strong> 32.7 Million</li>
+            <li><strong>Students:</strong> 1.2 million</li>
+            <li><strong>Language:</strong> Malay</li>
+        </ul>
+
+        <h2>Why Study in Malaysia from Bangladesh?</h2>
+        <p>Malaysia is a country that is Geographically safe, and free from all-natural calamities. As a study destination, Malaysia is considered one of the most secure places for international students, especially from Muslim countries all over the world.</p>
+        <p>The education system of Malaysia is almost similar to other EU countries. All these beautiful features attract international students to study in Malaysia.</p>
+        <p>Malaysia is one of the best study destinations for Bangladeshi students because of its good education systems with affordable cost. Tuition fees in Malaysia are less than in any other EU country.</p>
+        <p>Students can get a quality education with minimum tuition fees.</p>
+
+        <h2>Top Cities in Malaysia for Bangladeshi Students</h2>
+        <p>Malaysia has many cities with universities that welcome international students, including Bangladeshi students. Here are some of the top cities in Malaysia for Bangladeshi students to consider:</p>
+        <ul>
+            <li>Kuala Lumpur</li>
+            <li>Penang</li>
+            <li>Johor Bahru</li>
+            <li>Kota Kinabalu</li>
+            <li>Shah Alam</li>
+        </ul>
+        <p>These cities offer a variety of options for Bangladeshi students who are looking for quality education and a great student experience in Malaysia.</p>
+
+        <h2>Study in Malaysia from Bangladesh</h2>
+        <h3>Popular Courses in Malaysia for International Students</h3>
+        <p>Malaysia is an increasingly popular destination for international students, offering a range of courses across multiple disciplines. Here are some of the popular courses in Malaysia for international students:</p>
+        <ul>
+            <li>Engineering <a href="#">Read more ⤏</a></li>
+            <li>Accounting <a href="#">Read more ⤏</a></li>
+            <li>Economics <a href="#">Read more ⤏</a></li>
+            <li>Computer & IT <a href="#">Read more ⤏</a></li>
+            <li>Law & Legal Studies <a href="#">Read more ⤏</a></li>
+            <li>Health & Medicine <a href="#">Read more ⤏</a></li>
+            <li>Language & Culture <a href="#">Read more ⤏</a></li>
+            <li>Art & Design <a href="#">Read more ⤏</a></li>
+        </ul>
+        <p><a href="#">More about Courses</a></p>
+
+        <h2>Scholarships in Malaysia for Bangladeshi Students</h2>
+        <p>Malaysian Universities offer scholarships for international students to manage their expenses. Students applied for scholarships in undergraduate and postgraduate study programs. The types of scholarships are as follows:</p>
+        <ul>
+            <li>Khazanah Global Scholarship.</li>
+            <li>MyBrainSc Scholarship.</li>
+            <li>Shell Malaysia Overseas Undergraduate Scholarship Awards.</li>
+            <li>Bank Negara Scholarships.</li>
+            <li>JPA Scholarship – Program JKPJ.</li>
+            <li>UEM Group Undergraduate Overseas Scholarship.</li>
+            <li>The Fulbright Program.</li>
+            <li>British Council GREAT Scholarships for Malaysian Students.</li>
+        </ul>
+        <p><a href="#">Apply for Scholarships</a></p>
+
+        <h2>Scholarships in Malaysia for Bangladeshi Students</h2>
+        <h3>Steps to Study in Malaysia from Bangladesh</h3>
+        <p>If you are a Bangladeshi student interested in studying in Malaysia, here are some steps you can follow:</p>
+        <ol>
+            <li><strong>Research Universities and Courses:</strong> Start by researching universities and courses in Malaysia that suit your interests and academic goals. You can use online resources to find information about universities, courses, admission requirements, tuition fees, and scholarships.</li>
+            <li><strong>Check Eligibility:</strong> Check the eligibility criteria for the university and course you are interested in. Make sure you meet the minimum academic requirements, English language proficiency requirements, and any other specific requirements.</li>
+            <li><strong>Apply to Universities:</strong> Check the application deadlines and submit your application along with all required documents, such as academic transcripts, English language proficiency test results, and passport copy.</li>
+            <li><strong>Apply for a Student Visa:</strong> After receiving an offer of admission, you will need to apply for a student visa to study in Malaysia. You can apply for a visa through the Malaysian embassy or consulate in Bangladesh.</li>
+        </ol>
+
+        <h3>Intakes in Malaysia</h3>
+        <p>There are typically two intakes in Malaysia. Here is some information on each intake:</p>
+        <table border="1">
+            <tr>
+                <th>Intakes</th>
+                <th>Duration</th>
+            </tr>
+            <tr>
+                <td>September Intake</td>
+                <td>September February</td>
+            </tr>
+            <tr>
+                <td>February Intake</td>
+                <td>March to August</td>
+            </tr>
+        </table>
+        <p><a href="#">Apply for Upcoming Intakes</a></p>
+
+        <h2>Top Universities in Malaysia</h2>
+        <p>Here are some of the top universities in Malaysia for international students:</p>
+        <ul>
+            <li>The International Islamic University of Malaysia</li>
+            <li>The National University of Malaysia</li>
+            <li>The University of Malaysia Kelantan</li>
+            <li>The University of Malaysia Pahang</li>
+            <li>The University of Malaysia Perlis</li>
+            <li>University of Malaysia Sabah</li>
+            <li>The University of Malaysia Sarawak</li>
+        </ul>
+        <p><a href="#">Apply For Scholarships!</a></p>
+
+        <h3>Your Consultant Monirul Hoque</h3>
+        <p>HAVE ANY QUESTION?</p>
+        <p>Our consultant will help you find the best study destination.</p>
+        <p>Call: +880-1615-000125</p>
+        <p><a href="#">Contact Us</a></p>
+        <p>Google Logo</p>
+        <p>GOOGLE REVIEW</p>
+        <p>4.7</p>
+        <p>Review Star</p>
+        <p>150+ reviews</p>
+
+        <h2>Tuition Fees in Malaysia for Bangladeshi Students</h2>
+        <p>The Tuition fees in Malaysia for Bangladeshi students can vary depending on the university, course of study, and level of study. Here is a rough estimate of the tuition fees for undergraduate and postgraduate courses for Bangladeshi students in Malaysia:</p>
+        <h3>Undergraduate Programs:</h3>
+        <table border="1">
+            <tr>
+                <th>Public Universities</th>
+                <th>Private Universities</th>
+            </tr>
+            <tr>
+                <td>Approx. 370,000 to 555,000 BDT Per Year</td>
+                <td>Approx. 462,500 to 925,000 BDT Per Year</td>
+            </tr>
+        </table>
+        <h3>Postgraduate Programs:</h3>
+        <table border="1">
+            <tr>
+                <th>Public Universities</th>
+                <th>Private Universities</th>
+            </tr>
+            <tr>
+                <td>Approx. 277,000 to 462,500 BDT Per Year</td>
+                <td>Approx. 462,500 to 925,000 BDT Per Year</td>
+            </tr>
+        </table>
+
+        <h2>Cost of Living in Malaysia for International Students</h2>
+        <p>The cost of living in Malaysia for international students can vary depending on various factors such as the city of study, lifestyle, accommodation, food, transportation, and personal expenses.</p>
+        <p>Here is a breakdown of the estimated monthly living expenses for international students in Malaysia:</p>
+        <table border="1">
+            <tr>
+                <th>Expenses Category</th>
+                <th>Approximate Cost (Monthly)</th>
+            </tr>
+            <tr>
+                <td>Rent per month</td>
+                <td>Approx. 7,400 to 14,800 BDT Per Month</td>
+            </tr>
+            <tr>
+                <td>Food and housekeeping</td>
+                <td>Approx. 11,100 to 14,800 BDT Per Month</td>
+            </tr>
+            <tr>
+                <td>Utilities</td>
+                <td>Approx. 3,700 to 7,400 BDT Per Month</td>
+            </tr>
+            <tr>
+                <td>Phone and Internet</td>
+                <td>Approx. 1,850 to 2,775 BDT Per Month</td>
+            </tr>
+            <tr>
+                <td>Books and Study Materials</td>
+                <td>Approx. 1,850 to 3,700 BDT Per month</td>
+            </tr>
+            <tr>
+                <td>Travel & transport</td>
+                <td>Approx. 1,850 to 2,775 BDT Per Month</td>
+            </tr>
+        </table>
+
+        <h2>Malaysian Visa Requirements for Bangladeshi Students</h2>
+        <ul>
+            <li>Valid Passport</li>
+            <li>Academic Transcripts & Certificate</li>
+            <li>Evidence of a full-time course of study that has been approved by the Minister of Home</li>
+            <li>Proof of Funds / Financial Documents Solvency Certificate</li>
+            <li>SOP</li>
+            <li>Academic/Job Reference letter</li>
+            <li>Medical test result</li>
+            <li>Health Insurance payment</li>
+            <li>Visa Appointment Letter</li>
+        </ul>
+        <p><a href="#">Documentation Checklist</a></p>
+        <p><a href="#">Contact Us</a></p>
+
+        <h2>Malaysian Visa Requirements for Bangladeshi Students</h2>
+        <h3>Why Choose Sangen?</h3>
+        <p>Sangenbd is one of the best study-abroad agencies in Dhaka, Bangladesh. It provides support, information, and guidance to students who are interested in studying in Malaysia.</p>
+        <p>Here are some reasons why you choose Sangen for your study abroad journey:</p>
+        <ul>
+            <li>Student Counseling Service <a href="#">Student Counseling Consultancy ⤏</a></li>
+            <li>Visa Processing <a href="#">Visa Processing Support ⤏</a></li>
+            <li>Fulbright Scholarship <a href="#">Scholarships Support ⤏</a></li>
+            <li>Travel Guideline <a href="#">Travel Guidelines ⤏</a></li>
+            <li>Post Departure Support <a href="#">Post Departure Support ⤏</a></li>
+        </ul>
+
+        <h2>Other Countries You May Apply</h2>
+        <p>There are many countries around the world that offer excellent opportunities for higher education. Each country has its own unique education system, culture, and visa requirements for international students.</p>
+        <p>Here are some popular destinations for international students:</p>
+        <ul>
+            <li><a href="canada.html">Study in Canada</a> <a href="#">Study in Canada ⤏</a></li>
+            <li><a href="usa.html">Study in the USA</a> <a href="#">Study in USA ⤏</a></li>
+            <li><a href="australia.html">Study in Australia</a> <a href="#">Study in Australia ⤏</a></li>
+            <li>Study in Europe <a href="#">Study in Europe ⤏</a></li>
+        </ul>
+        <p><a href="#">Explore Other Countries</a></p>
+
+        <h2>Related Blogs and Articles Regarding Study Abroad</h2>
+        <ul>
+            <li><a href="#">Study in USA from Bangladesh</a> <a href="#">Read More ⤏</a></li>
+            <li><a href="#">BMDC Approved Medical Universities</a> <a href="#">Read More ⤏</a></li>
+            <li><a href="#">GRE Exam</a> <a href="#">Read More ⤏</a></li>
+        </ul>
+        <p><a href="#">Related Blog & Articles</a></p>
+        <p>Read Our Student Reviews</p>
+
+        <h2>Frequently Asked Questions</h2>
+        <p>Some popular courses for Bangladeshi students to study in Malaysia are engineering, business, computer science, medicine, and hospitality.</p>
     </div>
    <footer role="contentinfo" aria-label="Site footer">
   <div class="container">
     <div class="footer-left">
-      <footer role="contentinfo" aria-label="Site footer" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; padding: 40px 0; color: #aab3c5; font-size: .9rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 40px;">
+    <footer role="contentinfo" aria-label="Site footer" style="display: flex; justify-content: flex-end; align-items: flex-start; flex-wrap: wrap; padding: 40px 0; color: #aab3c5; font-size: .9rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 40px;">
         <div style="display: flex; flex-direction: column; align-items: flex-start;">
             <img src="logo.pnj.png" alt="Logo" style="width: 50px; height: 50px;">
             <h3>WorldLink Migration & Visa Consultancy</h3>
