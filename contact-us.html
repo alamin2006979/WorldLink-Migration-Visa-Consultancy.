@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="logo.pnj.png" type="image/png">
-  <title>WorldLink Migration & Visa Consultancy</title>
+  <title>Contact Us - WorldLink Migration & Visa Consultancy</title>
   <style>
     :root{
       --bg: #0b1020;
@@ -56,18 +56,6 @@
     }
 
     .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-
-    .hero {
-      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 36px; align-items: center; padding: 60px 0 40px;
-    }
-    .hero h1 { font-size: 2.6rem; margin: 0 0 12px; line-height: 1.08; letter-spacing: -0.02em; }
-    .hero p { color: var(--muted); font-size: 1.05rem; max-width: 60ch; }
-    .badge { display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; border:1px solid rgba(255,255,255,0.2); color:#fff; background: rgba(108,140,255,0.25); font-size:.85rem; }
-    .hero-visual {
-      width: 100%; height: 320px; border-radius: var(--radius); background: linear-gradient(135deg, rgba(108,140,255,0.25), rgba(108,255,207,0.15) 60%), #11152b;
-      display: grid; place-items: center; border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: inset 0 0 60px rgba(0,0,0,0.25);
-    }
 
     section { padding: 40px 0; }
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
@@ -220,49 +208,31 @@
 </header>
 
 <main class="container" id="top">
-  <section class="hero" aria-label="Intro section">
-    <div>
-      <span class="badge" aria-label="Trusted badge">Trusted Consultancy</span>
-      <h1>Expert Migration and Visa Services for Your Future</h1>
-      <p>Navigate your immigration journey with confidence. We provide comprehensive visa applications, immigration advice, and personalized consultancy to help you achieve your global aspirations.</p>
-      <div style="margin-top: 14px;">
-        <a href="#contact" class="button" style="padding:12px 16px;background: var(--accent);">Get Started</a>
+  <section aria-label="Contact form">
+    <h2 style="margin: 0 0 8px;">Contact Us</h2>
+    <p style="color:var(--muted); margin: 0 0 16px;">Contact us for a consultation and let us guide you through your visa and migration needs.</p>
+    <form action="https://formspree.io/f/xkgpobog" method="POST" aria-label="Contact form">
+      <div class="form-row">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" placeholder="Your name" required />
       </div>
-    </div>
-    <div class="hero-visual" aria-label="Decorative visual area">
-      <img src="hero-image.jpg" alt="Migration and Visa Services Illustration" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius);">
-    </div>
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required />
+      </div>
+      <div class="form-row">
+        <label for="subject">Subject</label>
+        <input id="subject" name="subject" type="text" placeholder="Subject" />
+      </div>
+      <div class="form-row" style="grid-column: 1 / -1;">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
+      </div>
+      <div style="grid-column: 1 / -1;">
+        <button type="submit" class="button" style="padding:12px 16px;background: var(--accent);">Send Message</button>
+      </div>
+    </form>
   </section>
-
-  <section id="services" aria-label="Services">
-    <h2 style="margin: 0 0 16px;">Our Services</h2>
-    <p style="color:var(--muted); margin: 0 0 20px;">Comprehensive solutions tailored to your migration needs.</p>
-    <div class="grid">
-      <article class="card" aria-label="Service one">
-        <h3>Visa Applications</h3>
-        <p>Expert assistance with tourist, work, student, and family visas for various countries.</p>
-      </article>
-      <article class="card" aria-label="Service two">
-        <h3>Immigration Advice</h3>
-        <p>Personalized guidance on immigration policies, eligibility, and pathways.</p>
-      </article>
-      <article class="card" aria-label="Service three">
-        <h3>Document Preparation</h3>
-        <p>Help with gathering, verifying, and preparing all necessary documents.</p>
-      </article>
-      <article class="card" aria-label="Service four">
-        <h3>Consultation & Support</h3>
-        <p>Ongoing support throughout your immigration process.</p>
-      </article>
-    </div>
-  </section>
-
-  <section id="about" aria-label="About">
-    <h2 style="margin: 0 0 16px;">About Us</h2>
-    <p style="color:var(--muted); margin: 0 0 20px;">WorldLink Migration & Visa Consultancy is dedicated to helping individuals and families achieve their dreams of living and working abroad. With years of experience, we provide reliable and efficient services to make your migration journey smooth and successful.</p>
-  </section>
-
-
 </main>
 
 
