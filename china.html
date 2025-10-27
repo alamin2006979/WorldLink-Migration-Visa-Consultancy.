@@ -6,27 +6,87 @@
     <title>Study in China - WorldLink Migration & Visa Consultancy</title>
     <link rel="icon" href="logo.pnj.png" type="image/png">
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: linear-gradient(to right, #1a1a2e, #16213e); color: white; min-height: 100vh; }
-        header { display: flex; justify-content: space-between; align-items: center; padding: 10px; background-color: rgba(0,0,0,0.8); position: sticky; top: 0; z-index: 1000; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background: linear-gradient(to right, #1a1a2e, #16213e); color: white; min-height: 100vh; line-height: 1.6; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background-color: rgba(0,0,0,0.9); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
         nav ul { display: flex; list-style: none; gap: 20px; margin: 0; padding: 0; }
         nav ul li { position: relative; }
-        nav ul li a { text-decoration: none; color: white; padding: 8px 12px; border-radius: 8px; background: transparent; border: 1px solid rgba(255,255,255,0.2); transition: background 0.3s; }
-        nav ul li a:hover { background: rgba(255,255,255,0.1); }
-        nav ul li a:active { color: blue; }
-        nav ul li ul { display: none; position: absolute; top: 100%; left: 0; background-color: white; border: 1px solid #ccc; padding: 0; margin: 0; list-style: none; min-width: 200px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        nav ul li a { text-decoration: none; color: white; padding: 10px 15px; border-radius: 8px; background: transparent; border: 1px solid rgba(255,255,255,0.3); transition: all 0.3s ease; font-weight: 500; }
+        nav ul li a:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+        nav ul li a:active { color: #00d4ff; }
+        nav ul li ul { display: none; position: absolute; top: 100%; left: 0; background-color: white; border: 1px solid #ccc; padding: 0; margin: 0; list-style: none; min-width: 200px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 5px; }
         nav ul li:hover ul { display: block; }
         nav ul li ul li { padding: 10px; }
-        nav ul li ul li a { color: black; display: block; border: none; background: none; padding: 0; }
+        nav ul li ul li a { color: black; display: block; border: none; background: none; padding: 8px 15px; border-radius: 0; }
         nav ul li ul li a:hover { background-color: #f0f0f0; }
-        h3 {
-          background: linear-gradient(to right, #ff0000, #0000ff);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+        h1 { font-size: 2.5em; margin-bottom: 20px; text-align: center; background: linear-gradient(to right, #ff0000, #0000ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        h2 { font-size: 1.8em; margin-top: 40px; margin-bottom: 15px; color: #00d4ff; border-bottom: 2px solid #00d4ff; padding-bottom: 10px; }
+        h3 { font-size: 1.5em; margin-top: 30px; margin-bottom: 10px; color: #ffcc00; }
+        .content { max-width: 900px; margin: 30px auto; background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+        .content img { max-width: 100%; height: auto; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+        ul { padding-left: 20px; }
+        ul li { margin-bottom: 10px; }
+        ul li img { vertical-align: middle; margin-right: 10px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; }
+        table th, table td { padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.2); }
+        table th { background: rgba(0,212,255,0.2); color: #00d4ff; font-weight: bold; }
+        table tr:hover { background: rgba(255,255,255,0.05); }
+        a { color: #00d4ff; text-decoration: none; transition: color 0.3s; }
+        a:hover { color: #ffcc00; text-decoration: underline; }
+        p { margin-bottom: 15px; }
+        .highlight { background: rgba(255,255,255,0.1); padding: 15px; border-left: 5px solid #00d4ff; margin: 20px 0; border-radius: 5px; }
+        .faq { margin: 20px 0; }
+        .faq details { margin-bottom: 10px; background: rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; }
+        .faq summary { padding: 15px; cursor: pointer; font-weight: bold; color: #00d4ff; transition: background 0.3s; }
+        .faq summary:hover { background: rgba(255,255,255,0.05); }
+        .faq details[open] summary { background: rgba(0,212,255,0.1); }
+        .faq details p { padding: 0 15px 15px; margin: 0; color: white; }
+        .courses { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0; }
+        .course-card { background: rgba(255,255,255,0.1); border-radius: 10px; padding: 15px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
+        .course-card:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,0.3); }
+        .course-card img { width: 80px; height: 80px; border-radius: 50%; margin-bottom: 10px; }
+        .course-card h3 { margin: 0; color: #00d4ff; font-size: 1.1em; }
+
+        @media (max-width: 1024px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.6rem; }
+            h3 { font-size: 1.3rem; }
+            .content { padding: 20px; }
+            .courses { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
         }
-        .content { max-width: 800px; margin: 20px auto; background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px; backdrop-filter: blur(10px); }
-        a { color: #007bff; text-decoration: none; }
-        a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 10px; padding: 10px; }
+            nav ul { flex-direction: column; gap: 10px; }
+            nav li ul { position: static; display: none; } /* hide dropdowns on mobile */
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.2rem; }
+            .content { padding: 15px; margin: 20px auto; }
+            .courses { grid-template-columns: 1fr; }
+            .course-card { padding: 10px; }
+            .course-card img { width: 60px; height: 60px; }
+            .course-card h3 { font-size: 1rem; }
+            table th, table td { padding: 8px; font-size: 0.9rem; }
+            ul { padding-left: 15px; }
+            footer { flex-direction: column; align-items: center; text-align: center; }
+        }
+
+        @media (max-width: 1024px) {
+            .content { padding: 15px; }
+        }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 10px; padding: 10px; }
+            nav ul { flex-direction: column; gap: 10px; }
+            nav li ul { position: static; display: none; }
+            .content { padding: 10px; margin: 15px auto; }
+            footer { flex-direction: column; align-items: center; text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            nav ul li a { padding: 6px 8px; font-size: 0.9rem; }
+            .content { padding: 8px; }
+        }
     </style>
 </head>
 <body>
@@ -77,15 +137,235 @@
         </nav>
     </header>
     <div class="content">
-        <h2>Study in China</h2>
-        <p>China offers excellent educational opportunities with prestigious universities, advanced research facilities, and a rich cultural experience. Explore programs in engineering, business, and more for international students.</p>
-        <p>Our consultancy helps with X visa applications, university admissions, and more.</p>
+        <img src="china1.jpg" alt="Study in China Banner" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px;">
+        <h1>Study in China from Bangladesh</h1>
+        <div class="highlight">
+            <p>China is known internationally for its vast landscape and huge population. It is called the leader in global innovation, and mass manufacturing, and the largest exporter in the world. Every year China has attracted a huge amount of international students from around the world especially from Bangladesh with their innovative minds.</p>
+            <p>On the other hand, living and studying in China is considerably cheaper than in any developed country, that's why it has been a top choice of destination for many potential students all over the world.</p>
+        </div>
+
+        <h2>China in Brief</h2>
+        <ul>
+            <li><strong>Capital:</strong> Beijing</li>
+            <li><strong>Largest Cities:</strong> Shanghai</li>
+            <li><strong>GDP:</strong> $18.321 Trillion</li>
+            <li><strong>Top Universities:</strong> 3012</li>
+            <li><strong>Language:</strong> Mandarin</li>
+            <li><strong>Currency:</strong> Yuan</li>
+            <li><strong>Population:</strong> 1.4 Billion</li>
+            <li><strong>Students:</strong> 44.3 million</li>
+        </ul>
+
+        <h2>Why China for Higher Education?</h2>
+        <p>China has become an increasingly popular destination for higher education among international students, and for good reason. Studying in China can be a rewarding experience that can provide a solid foundation for future academic and career success.</p>
+        <p>Here are some reasons why China is an attractive option for higher education:</p>
+        <ul>
+            <li><strong>Quality Education:</strong> China ensures the world's best quality education to its students.</li>
+            <li><strong>Cultural Diversity:</strong> China is a country with a rich and diverse cultural heritage.</li>
+            <li><strong>Work While You Study:</strong> International students can work part-time.</li>
+            <li><strong>Health Benefits:</strong> Eligible for certain health benefits.</li>
+            <li><strong>No IELTS / Bank Statement:</strong> No need for IELTS or bank statements.</li>
+            <li><strong>Work Permit After Graduation:</strong> Opportunities for employment post-graduation.</li>
+        </ul>
+
+        <h2>Top Cities in China for Bangladeshi Students</h2>
+        <img src="china2.jpg" alt="Top Cities in China" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px;">
+        <p>The most popular cities in China for Bangladeshi students are:</p>
+        <ul class="study-cities-list">
+            <li><a href="https://english.beijing.gov.cn/studyinginbeijing/" target="_blank">Beijing</a></li>
+            <li><a href="https://english.shanghai.gov.cn/en-GuideforNewStudents/index.html" target="_blank">Shanghai</a></li>
+            <li><a href="https://studyinchinas.com/study-in-guangzhou-guangzhou-universitie/" target="_blank">Guangzhou</a></li>
+            <li><a href="https://www.china-admissions.com/study-in-shenzhen-as-an-international-student/" target="_blank">Shenzhen</a></li>
+            <li><a href="https://www.gooverseas.com/study-abroad/china/chengdu" target="_blank">Chengdu</a></li>
+            <li><a href="https://www.china-admissions.com/study-in-hangzhou-as-an-international-student/" target="_blank">Hangzhou</a></li>
+            <li><a href="https://studyabroadaide.com/studying-in-xian/" target="_blank">Xi’an</a></li>
+            <li><a href="https://www.expat.com/en/guide/asia/china/jiangsu/15836-key-facts-for-international-students-in-nanjing.html" target="_blank">Nanjing</a></li>
+            <li><a href="https://www.expat.com/en/guide/asia/china/hubei/15343-key-facts-for-international-students-in-wuhan.html" target="_blank">Wuhan</a></li>
+        </ul>
+
+        <h2>Popular Courses in China for International Students</h2>
+        <p>China offers a wide range of courses and degree programs for international students at both undergraduate and graduate levels. Some of the popular courses include:</p>
+        <div class="courses">
+            <div class="course-card">
+                <img src="engineering.jpg" alt="Engineering">
+                <h3>Engineering</h3>
+            </div>
+            <div class="course-card">
+                <img src="computing-and-it.jpg" alt="Computing and IT">
+                <h3>Computer & IT</h3>
+            </div>
+            <div class="course-card">
+                <img src="biological-and-life-sciences.jpg" alt="Biological & Life Sciences">
+                <h3>Biological & Life Sciences</h3>
+            </div>
+            <div class="course-card">
+                <img src="health-&-medicine (1).jpg" alt="Health & Medicine">
+                <h3>Health & Medicine</h3>
+                <ul>
+            
+                              </div>
+            <div class="course-card">
+                <img src="economics.jpg" alt="Economics">
+                <h3>Economics</h3>
+            </div>
+            <div class="course-card">
+                <img src="language-and-culture.jpg" alt="Language and Culture">
+                <h3>Language & Culture</h3>
+            </div>
+            <div class="course-card">
+                <img src="art-&-design.jpg" alt="Art & Design">
+                <h3>Art & Design</h3>
+            </div>
+            <div class="course-card">
+                <img src="accounting.jpg" alt="Accounting">
+                <h3>Accounting</h3>
+            </div>
+        </div>
+
+        <h2>Scholarship Facilities in China for International Students</h2>
+        <img src="china3.jpg" alt="Scholarships in China" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px;">
+        <p>China offers various scholarship facilities for Bangladeshi students. Click on the links below for more information and applications:</p>
+        <ul>
+            <li><a href="https://www.chinesescholarshipcouncil.com/" target="_blank">Chinese Government Scholarship (CSC) – official CSC site</a></li>
+            <li><a href="https://us.china-embassy.gov.cn/eng/lxfw/studyinchina/chinesegovernmentscholarship/" target="_blank">Chinese Government Scholarship – via Chinese Embassy (USA example) – apply via CSC portal</a></li>
+            <li><a href="https://www.eduincn.com/confucius-institute-scholarship/" target="_blank">Confucius Institute Scholarship – info page</a></li>
+            <li><a href="http://cis.chinese.cn" target="_blank">Confucius Institute Scholarship – official online application site</a></li>
+            <li><a href="https://www.mofa.gov.bd/site/page/4d3e5b27-0827-435f-b31f-47917510962b/Scholarships" target="_blank">Scholarships – Ministry of Foreign Affairs, Bangladesh (includes China Govt Scholarship info)</a></li>
+            <li><a href="https://educarebd.net/study-in-china/" target="_blank">Various China Scholarships for Bangladeshi Students (overview) – includes Chinese Local Government, University Scholarships, etc.</a></li>
+        </ul>
+
+        <h2>Steps to Study in China from Bangladesh</h2>
+        <p>If you are a Bangladeshi student who wants to study in China, here are the steps:</p>
+        <ul>
+            <li>Research your options</li>
+            <li>Choose a program and university</li>
+            <li>Apply to the university</li>
+            <li>Apply for a visa</li>
+            <li>Plan for finances</li>
+            <li>Prepare for departure</li>
+        </ul>
+
+        <h2>Intakes in China</h2>
+        <table border="1">
+            <tr>
+                <th>Intakes</th>
+                <th>Duration</th>
+            </tr>
+            <tr>
+                <td>Autumn/Fall intake</td>
+                <td>August to February</td>
+            </tr>
+            <tr>
+                <td>Spring intake</td>
+                <td>February to August</td>
+            </tr>
+        </table>
+
+        <h2>Top Ranked Chinese Universities for Bangladeshi Students</h2>
+        <ul>
+            <li>Tsinghua University</li>
+            <li>Peking University</li>
+            <li>Fudan University</li>
+            <li>Zhejiang University</li>
+            <li>Shanghai Jiao Tong University</li>
+            <li>Wuhan University</li>
+            <li>Nanjing University</li>
+        </ul>
+
+        <h2>Average Cost of Living in China</h2>
+        <table border="1">
+            <tr>
+                <th>Expenses Category</th>
+                <th>Approximate Cost (Monthly)</th>
+            </tr>
+            <tr>
+                <td>Accommodation</td>
+                <td>22,000 to 44,000 BDT</td>
+            </tr>
+            <tr>
+                <td>Food</td>
+                <td>14,700 to 22,000 BDT</td>
+            </tr>
+            <tr>
+                <td>Transportation</td>
+                <td>3,000 to 4,500 BDT</td>
+            </tr>
+            <tr>
+                <td>Miscellaneous expenses</td>
+                <td>7,300 to 14,700 BDT</td>
+            </tr>
+        </table>
+
+        <h2>China Visa Requirements for Bangladeshi Students</h2>
+        <ul>
+            <li>Valid Passport</li>
+            <li>Academic Transcripts & Certificate</li>
+            <li>Confirmation of Acceptance for Studies (CAS)</li>
+            <li>Proof of Funds / Financial Documents</li>
+            <li>SOP</li>
+            <li>Academic/Job Reference letter</li>
+            <li>TB Test/Medical test result</li>
+            <li>Health Insurance payment</li>
+            <li>Visa Appointment Letter & Documentation Checklist</li>
+        </ul>
+
+        <h2>Why Choose WorldLink?</h2>
+        <p>WorldLink Migration & Visa Consultancy provides all the necessary cooperation needed for higher education abroad from Bangladesh with transparency and accountability.</p>
+        <ul>
+            <li>Student Counseling Consultancy</li>
+            <li>Visa Processing Support</li>
+            <li>Scholarships Support</li>
+            <li>Travel Guidelines</li>
+            <li>Post Departure Support</li>
+        </ul>
+
+        <h2>Student Reviews</h2>
+        <p>Reviews from students who have successfully studied in China with our help.</p>
+        <!-- Add sample reviews here -->
+
+        <h2>Success Stories</h2>
+        <p>Stories of students who achieved their dreams studying in China.</p>
+        <!-- Add success stories here -->
+
+        <h2>Other Countries You May Apply</h2>
+        <ul>
+            <li><a href="canada.html">Study in Canada</a></li>
+            <li><a href="usa.html">Study in USA</a></li>
+            <li><a href="australia.html">Study in Australia</a></li>
+            <li><a href="uk.html">Study in UK</a></li>
+            <li><a href="malaysia.html">Study in Malaysia</a></li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq">
+            <details>
+                <summary>What are the popular courses?</summary>
+                <p>Engineering, IT, Medicine, etc.</p>
+            </details>
+            <details>
+                <summary>Eligibility criteria?</summary>
+                <p>Completed 12 years of education.</p>
+            </details>
+            <details>
+                <summary>Admission process?</summary>
+                <p>Online application.</p>
+            </details>
+            <details>
+                <summary>Costs?</summary>
+                <p>Tuition and living expenses.</p>
+            </details>
+            <details>
+                <summary>Scholarships?</summary>
+                <p>Yes, various options.</p>
+            </details>
+        </div>
+
         <a href="main.html">Back to Home</a>
     </div>
    <footer role="contentinfo" aria-label="Site footer">
   <div class="container">
     <div class="footer-left">
-      <footer role="contentinfo" aria-label="Site footer" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; padding: 40px 0; color: #aab3c5; font-size: .9rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 40px;">
+    <footer role="contentinfo" aria-label="Site footer" style="display: flex; justify-content: flex-end; align-items: flex-start; flex-wrap: wrap; padding: 40px 0; color: #aab3c5; font-size: .9rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 40px;">
         <div style="display: flex; flex-direction: column; align-items: flex-start;">
             <img src="logo.pnj.png" alt="Logo" style="width: 50px; height: 50px;">
             <h3>WorldLink Migration & Visa Consultancy</h3>
