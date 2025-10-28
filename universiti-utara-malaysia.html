@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universiti Utara Malaysia (UUM) - WorldLink Migration & Visa Consultancy</title>
+    <link rel="icon" href="logo.pnj.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background: linear-gradient(135deg, #1a1a2e, #16213e, #0f0f23); color: #e0e0e0; min-height: 100vh; line-height: 1.6; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: rgba(0,0,0,0.9); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.5); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        nav ul { display: flex; list-style: none; gap: 15px; margin: 0; padding: 0; }
+        nav ul li { position: relative; }
+        nav ul li a { text-decoration: none; color: #e0e0e0; padding: 10px 15px; border-radius: 25px; background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s ease; font-weight: 500; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        nav ul li a:hover { background: linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1)); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+        nav ul li a:active { transform: translateY(0); }
+        nav ul li ul { display: none; position: absolute; top: 100%; left: 0; background: rgba(255,255,255,0.95); border: 1px solid #ddd; padding: 0; margin: 0; list-style: none; min-width: 200px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); border-radius: 10px; }
+        nav ul li:hover ul { display: block; }
+        nav ul li ul li { padding: 10px; }
+        nav ul li ul li a { color: #333; display: block; border: none; background: none; padding: 8px 15px; border-radius: 5px; }
+        nav ul li ul li a:hover { background: #f0f0f0; color: #007bff; }
+        h1 { font-size: 2.5em; margin-bottom: 20px; text-align: center; background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        h2 { font-size: 1.8em; margin-top: 40px; margin-bottom: 15px; color: #4ecdc4; border-bottom: 3px solid #4ecdc4; padding-bottom: 10px; font-weight: 600; }
+        h3 { font-size: 1.5em; margin-top: 30px; margin-bottom: 10px; color: #ffcc00; font-weight: 600; }
+        .content { max-width: 900px; margin: 30px auto; background: rgba(255,255,255,0.08); padding: 30px; border-radius: 20px; backdrop-filter: blur(15px); box-shadow: 0 10px 40px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); }
+        .content img { max-width: 100%; height: auto; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.2); transition: transform 0.3s; }
+        .content img:hover { transform: scale(1.02); }
+        ul { padding-left: 20px; }
+        ul li { margin-bottom: 10px; position: relative; }
+        ul li::before { content: '▶'; color: #4ecdc4; position: absolute; left: -20px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        table th, table td { padding: 15px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        table th { background: linear-gradient(45deg, #4ecdc4, #45b7d1); color: white; font-weight: 600; }
+        table tr:hover { background: rgba(255,255,255,0.05); }
+        a { color: #4ecdc4; text-decoration: none; transition: color 0.3s; font-weight: 500; }
+        a:hover { color: #ffcc00; text-decoration: underline; }
+        p { margin-bottom: 15px; }
+        .highlight { background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)); padding: 20px; border-left: 5px solid #4ecdc4; margin: 20px 0; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+
+        @media (max-width: 1024px) {
+            .content { padding: 20px; }
+            h1 { font-size: 2.2rem; }
+        }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; padding: 15px; }
+            nav ul { flex-direction: column; gap: 10px; }
+            nav li ul { position: static; display: none; }
+            .content { padding: 15px; margin: 20px auto; }
+            footer { flex-direction: column; align-items: center; text-align: center; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.6rem; }
+            h3 { font-size: 1.3rem; }
+            table th, table td { padding: 10px; font-size: 0.9rem; }
+        }
+
+        @media (max-width: 480px) {
+            nav ul li a { padding: 8px 12px; font-size: 0.9rem; }
+            .content { padding: 10px; }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            h3 { font-size: 1.2rem; }
+            table th, table td { padding: 8px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div style="display: flex; align-items: center;">
+            <img src="logo.pnj.png" alt="Logo" style="width: 50px; height: 50px; margin-right: 10px;">
+            <h3>WorldLink Migration & Visa Consultancy</h3>
+        </div>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="main.html" class="button" style="padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.2);">Home</a></li>
+                <li><a href="#services" class="button" style="padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.2);">Services</a>
+                  <ul>
+                    <li><a href="main.html">Home</a></li>
+                    <li><a href="visa-applications.html">Visa Applications</a></li>
+                    <li><a href="immigration-advice.html">Immigration Advice</a></li>
+                    <li><a href="document-preparation.html">Document Preparation</a></li>
+                    <li><a href="consultation-support.html">Consultation & Support</a></li>
+                  </ul>
+                </li>
+                <li><a href="#about" class="button" style="padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.2);">About</a>
+                  <ul>
+                    <li><a href="main.html">Home</a></li>
+                    <li><a href="our-story.html">Our Story</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="mission.html">Mission</a></li>
+                  </ul>
+                </li>
+                <li><a href="#contact" class="button" style="padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.2);">Contact</a>
+                  <ul>
+                    <li><a href="main.html">Home</a></li>
+                    <li><a href="get-in-touch.html">Get in Touch</a></li>
+            <li><a href="contact-us.html">Contact Us</a></li>
+                    <li><a href="locations.html">Locations</a></li>
+                    <li><a href="support.html">Support</a></li>
+                  </ul>
+                </li>
+                <li><a href="#study" class="button" style="padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.2);">Study Destination</a>
+                  <ul>
+                    <li><a href="usa.html">USA</a></li>
+                    <li><a href="canada.html">Canada</a></li>
+                    <li><a href="uk.html">UK</a></li>
+                    <li><a href="australia.html">Australia</a></li>
+                    <li><a href="malaysia.html">Malaysia</a></li>
+                    <li><a href="china.html">China</a></li>
+                  </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="content">
+        <h1>Universiti Utara Malaysia (UUM)</h1>
+        <img src="uum-image.jpg" alt="Universiti Utara Malaysia" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px;">
+        <p>Universiti Utara Malaysia (UUM) is a renowned university specializing in management and business studies. It offers various undergraduate and postgraduate programs for international students.</p>
+
+        <h2>About UUM</h2>
+        <p>UUM is known for its focus on business education and has a vibrant campus life. The university provides excellent facilities and support for international students.</p>
+
+        <h2>Popular Courses</h2>
+        <ul>
+            <li>Business Administration</li>
+            <li>Accounting</li>
+            <li>Economics</li>
+            <li>Information Technology</li>
+        </ul>
+
+        <h2>Fees and Scholarships</h2>
+        <p>Fees vary by program. Scholarships are available for deserving international students. Contact us for more details.</p>
+
+        <h2>Contact Us for Admission</h2>
+        <p>Ready to apply to UUM? Let our experts assist you.</p>
+        <p>Call: +601124328920</p>
+        <p><a href="apply-now.html">Apply Now</a></p>
+    </div>
+    <footer role="contentinfo" aria-label="Site footer" style="display: flex; flex-direction: column; justify-content: center; align-items: center; flex-wrap: wrap; padding: 40px 0; color: #aab3c5; font-size: .9rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 40px; text-align: center;">
+        <div>
+            <img src="logo.pnj.png" alt="Logo" style="width: 60px; height: 60px;">
+            <h3>WorldLink Migration &amp; Visa Consultancy</h3>
+            <p>337, Alokar More, New Market Road,<br>Sostitola, Boalia, Rajshahi, Bangladesh</p>
+            <p>📞 +6011 2432 8920</p>
+           <div style="margin-top: 15px;">
+                <a href="https://wa.me/601124328920" target="_blank" style="padding: 8px 12px; background: #6c8cff; color: white; text-decoration: none; border-radius: 4px;">WhatsApp</a>
+                <a href="mailto:enuires.worldlinkmigration@gmail.com" style="padding: 8px 12px; background: #6c8cff; color: white; text-decoration: none; border-radius: 4px;">Email</a>
+            </div>
+        </div>
+        <div style="margin-top: 15px;">
+            <button onclick="alert('Live Chat coming soon!')" style="padding: 8px 12px; background: #6c8cff; color: white; border: none; border-radius: 4px;">Live Chat</button>
+        </div>
+        <div style="width: 100%; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08);">
+            <p>Copyright © 2025 WorldLink Migration &amp; Visa Consultancy. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
