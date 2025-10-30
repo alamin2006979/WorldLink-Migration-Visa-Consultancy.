@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="logo.pnj.png" type="image/png">
     <title>Study in Malaysia, Canada, Australia, USA - WorldLink Migration & Visa Consultancy</title>
     <meta name="description" content="We specialise in immigrant and student visa services for every major destination — Malaysia, Canada, Australia, the USA, the UK, China and Europe. Whether you want to study abroad, work or relocate your family, our expert advisors provide personalised guidance, handle all documentation and support you every step of the way. With transparent pricing, global expertise and a caring team, we help turn your international ambitions into reality.">
@@ -17,7 +17,7 @@
       --radius: 12px;
       --pad: 1rem;
     }
-
+ok
     * {box-sizing: border-box;}
     html, body {margin: 0; padding: 0; background: radial-gradient(circle at 20% -10%, rgba(108,140,255,0.15), transparent 40%), radial-gradient(circle at 100% 0%, rgba(108,140,255,0.10), transparent 40%), #0b1020; color: var(--text); font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; line-height: 1.5;}
 
@@ -143,7 +143,8 @@ OKH      .hero { grid-template-columns: 1fr; padding: 50px 20px; gap: 30px; }
     @media (max-width: 768px) {
       .nav { flex-direction: column; gap: 10px; }
       nav ul { flex-direction: column; gap: 10px; }
-      nav li ul { position: static; display: none; } /* hide dropdowns on mobile for simplicity */
+      nav li ul { position: static; display: none; }
+      nav li:hover ul { display: none; }
       .hamburger { display: block; }
       .hero { padding: 40px 15px; gap: 25px; }
       .hero h1 { font-size: 2.2rem; }
@@ -558,6 +559,7 @@ OKH      .hero { grid-template-columns: 1fr; padding: 50px 20px; gap: 30px; }
     </div>
   </div>
 
+  <script src="auth.js"></script>
   <script>
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
@@ -642,6 +644,17 @@ OKH      .hero { grid-template-columns: 1fr; padding: 50px 20px; gap: 30px; }
       const navUl = document.querySelector('nav ul');
       navUl.classList.toggle('show');
     }
+
+    // Add register link to nav if not logged in
+    document.addEventListener('DOMContentLoaded', function() {
+      updateNav();
+      const nav = document.querySelector('nav ul');
+      if (!getCurrentUser()) {
+        const li = document.createElement('li');
+        li.innerHTML = '<a href="register.html" class="button" style="padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.2);">Register</a>';
+        nav.appendChild(li);
+      }
+    });
   </script>
 </body>
 </html>
