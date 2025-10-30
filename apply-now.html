@@ -95,6 +95,8 @@ i<!DOCTYPE html>
       .hamburger { display: block; }
       nav ul { display: none; position: static; flex-direction: column; background: rgba(20,26,42,0.95); width: 100%; padding: 10px 0; }
       nav ul.show { display: flex; }
+      nav li ul { position: static; display: none; }
+      nav li:hover ul { display: none; }
       .hero { padding: 30px 0; }
       .hero h1 { font-size: 2rem; }
       .hero p { font-size: 0.95rem; }
@@ -171,7 +173,6 @@ i<!DOCTYPE html>
                 <li><a href="main.html" class="button" style="padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.2);">Home</a></li>
         <li><a href="#services" class="button" style="padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.2);">Services</a>
           <ul>
-            <li><a href="main.html">Home</a></li>
             <li><a href="visa-applications.html">Visa Applications</a></li>
             <li><a href="immigration-advice.html">Immigration Advice</a></li>
             <li><a href="document-preparation.html">Document Preparation</a></li>
@@ -180,15 +181,13 @@ i<!DOCTYPE html>
         </li>
         <li><a href="#about" class="button" style="padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.2);">About</a>
           <ul>
-            <li><a href="main.html">Home</a></li>
             <li><a href="our-story.html">Our Story</a></li>
             <li><a href="team.html">Team</a></li>
             <li><a href="mission.html">Mission</a></li>
           </ul>
         </li>
         <li><a href="#contact" class="button" style="padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.2);">Contact</a>
-          <ul>
-            <li><a href="main.html">Home</a></li>
+                  <ul>
             <li><a href="get-in-touch.html">Get in Touch</a></li>
             <li><a href="contact-us.html">Contact Us</a></li>
             <li><a href="locations.html">Locations</a></li>
@@ -276,8 +275,24 @@ i<!DOCTYPE html>
         <label for="whatsapp">WhatsApp Number</label>
         <input id="whatsapp" name="whatsapp" type="tel" placeholder="+1234567890" required />
       </div>
+
+      <div class="form-row">
+        <label for="certificateTranscript">Certificate/Transcript (PDF)</label>
+        <input id="certificateTranscript" name="certificateTranscript" type="file" accept=".pdf" required />
+      </div>
+
+      <div class="form-row">
+        <label for="passportFirstPage">Passport First Page (PDF)</label>
+        <input id="passportFirstPage" name="passportFirstPage" type="file" accept=".pdf" required />
+      </div>
+
+      <div class="form-row">
+        <label for="photo">Photo (JPG/PNG)</label>
+        <input id="photo" name="photo" type="file" accept=".jpg,.jpeg,.png" required />
+      </div>
+
       <div style="grid-column: 1 / -1;">
-        <button type="submit" class="button" style="padding:12px 16px;background: var(--accent);">Submit Application</button>
+        <button type="submit" class="button" style="padding:12px 16px;background: var(--accent); color: white;">Submit Application</button>
       </div>
     </form>
   </section>
@@ -320,6 +335,7 @@ i<!DOCTYPE html>
     </div>
   </div>
 
+  <script src="auth.js"></script>
   <script>
     function openChatModal() {
       document.getElementById('chatModal').style.display = 'block';
@@ -346,20 +362,67 @@ i<!DOCTYPE html>
       e.preventDefault();
       const form = e.target;
       const formData = new FormData(form);
-      fetch(form.action, {
+
+      // Get current user
+      const currentUser = getCurrentUser();
+
+      // Create application data
+      const applicationData = {
+        userId: currentUser ? currentUser.username : 'guest',
+        firstName: formData.get('firstName'),
+        surname: formData.get('surname'),
+        dob: formData.get('dob'),
+        gender: formData.get('gender'),
+        qualification: formData.get('qualification'),
+        englishProficiency: formData.get('englishProficiency'),
+        interestedCourse: formData.get('interestedCourse'),
+        country: formData.get('country'),
+        university: formData.get('university'),
+        whatsapp: formData.get('whatsapp'),
+        certificateTranscript: formData.get('certificateTranscript') ? formData.get('certificateTranscript').name : null,
+        passportFirstPage: formData.get('passportFirstPage') ? formData.get('passportFirstPage').name : null,
+        photo: formData.get('photo') ? formData.get('photo').name : null,
+        submittedAt: new Date().toISOString(),
+        status: 'pending'
+      };
+
+      // Send to server for automatic email and storage
+      const formDataObj = new FormData();
+      Object.keys(applicationData).forEach(key => {
+        formDataObj.append(key, applicationData[key]);
+      });
+
+      // Add files to FormData
+      if (document.getElementById('certificateTranscript').files[0]) {
+        formDataObj.append('certificateTranscript', document.getElementById('certificateTranscript').files[0]);
+      }
+      if (document.getElementById('passportFirstPage').files[0]) {
+        formDataObj.append('passportFirstPage', document.getElementById('passportFirstPage').files[0]);
+      }
+      if (document.getElementById('photo').files[0]) {
+        formDataObj.append('photo', document.getElementById('photo').files[0]);
+      }
+
+      fetch('http://localhost:8000/submit-application', {
         method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      }).then(response => {
-        if (response.ok) {
-          form.innerHTML = '<p style="color: #6c8cff; font-size: 1.2rem;">Thanks for your application! We will review your details and get back to you soon.</p>';
+        body: formDataObj
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          form.innerHTML = '<p style="color: #6c8cff; font-size: 1.2rem;">' + data.message + '</p>';
         } else {
-          alert('There was an error submitting the form. Please try again.');
+          form.innerHTML = '<p style="color: #ff6b6b; font-size: 1.2rem;">Error: ' + data.message + '</p>';
         }
-      }).catch(error => {
-        alert('There was an error submitting the form. Please try again.');
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        // Fallback to localStorage if server is not available
+        const applications = JSON.parse(localStorage.getItem('applications') || '[]');
+        applications.push(applicationData);
+        localStorage.setItem('applications', JSON.stringify(applications));
+
+        form.innerHTML = '<p style="color: #6c8cff; font-size: 1.2rem;">Application submitted successfully!</p>';
       });
     });
   </script>

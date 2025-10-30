@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="logo.pnj.png" type="image/png">
+  <title>Admin Panel - WorldLink Migration & Visa Consultancy</title>
+  <style>
+    :root{
+      --bg: #0b1020;
+      --card: #141a2a;
+      --accent: #6c8cff;
+      --text: #e7eaf6;
+      --muted: #aab3c5;
+      --radius: 12px;
+      --pad: 1rem;
+    }
+
+    * {box-sizing: border-box;}
+    html, body {margin: 0; padding: 0; background: radial-gradient(circle at 20% -10%, rgba(108,140,255,0.15), transparent 40%), radial-gradient(circle at 100% 0%, rgba(108,140,255,0.10), transparent 40%), #0b1020; color: var(--text); font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; line-height: 1.5;}
+
+    a { color: var(--accent); text-decoration: none; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(10,12,24,0.9);
+      backdrop-filter: saturate(120%) blur(6px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav {
+      max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: bold; letter-spacing: .5px; }
+    .brand img {
+      width: 28px; height: 28px; border-radius: 8px;
+    }
+    nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 16px; align-items: center; }
+    nav li { position: relative; }
+    nav li ul { display: none; position: absolute; top: 100%; left: 0; background: rgba(20,26,42,0.95); border-radius: 8px; padding: 8px 0; min-width: 200px; z-index: 100; }
+    nav li:hover ul { display: block; }
+    nav li ul li { margin: 0; }
+    nav li ul li a { padding: 8px 16px; display: block; color: #fff; }
+    nav li ul li a:hover { background: rgba(108,140,255,0.3); }
+    nav ul li a:active { color: blue; }
+    .button {
+      display:inline-block; padding: 10px 14px; border-radius: 8px; border: none;
+      color: red; background: black; transition: transform .2s, background .2s;
+    }
+    .button:hover { transform: translateY(-1px); background: #333; }
+    .brand span {
+      background: linear-gradient(to right, #ff0000, #0000ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+    section { padding: 40px 0; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+    .card { padding: 24px; border-radius: 12px; background: rgba(20,26,42,0.9); border: 1px solid rgba(255,255,255,0.06); }
+    .card h3 { margin: 0 0 6px; font-size: 1.05rem; }
+    .card p { color: var(--muted); font-size: .95rem; }
+
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    th { background: rgba(108,140,255,0.2); }
+
+    footer { padding: 40px 0; color: var(--muted); font-size: .9rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 40px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; }
+    .footer-left { display: flex; flex-direction: column; align-items: flex-start; }
+    .footer-right { display: flex; flex-direction: column; align-items: flex-end; }
+    .footer-buttons { display: flex; gap: 10px; margin-top: 10px; }
+    .footer-buttons a { padding: 8px 12px; background: var(--accent); color: white; text-decoration: none; border-radius: 4px; }
+    .footer-buttons a:hover { background: rgba(108,140,255,0.8); }
+    .copyright { width: 100%; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); }
+
+    .hamburger { display: none; font-size: 1.5rem; background: none; border: none; color: white; cursor: pointer; }
+
+    @media (max-width: 768px) {
+      .hamburger { display: block; }
+      nav ul { display: none; position: static; flex-direction: column; background: rgba(20,26,42,0.95); width: 100%; padding: 10px 0; }
+      nav ul.show { display: flex; }
+      nav li ul { position: static; display: none; }
+      nav li:hover ul { display: none; }
+      .grid { grid-template-columns: 1fr; }
+      .card { padding: 12px; }
+      footer { flex-direction: column; align-items: center; text-align: center; }
+      .footer-left, .footer-right { align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header aria-label="Site header">
+  <div class="nav container">
+    <div class="brand" aria-label="Brand">
+      <img src="logo.pnj.png" alt="Logo">
+      <span>WorldLink Migration & Visa Consultancy</span>
+    </div>
+    <nav aria-label="Main navigation">
+      <button class="hamburger" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
+      <ul>
+        <li><a href="main.html" class="button" style="padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.2);">Home</a></li>
+        <li><a href="#services" class="button" style="padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.2);">Services</a>
+          <ul>
+            <li><a href="visa-applications.html">Visa Applications</a></li>
+            <li><a href="immigration-advice.html">Immigration Advice</a></li>
+            <li><a href="document-preparation.html">Document Preparation</a></li>
+            <li><a href="consultation-support.html">Consultation & Support</a></li>
+          </ul>
+        </li>
+        <li><a href="#about" class="button" style="padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.2);">About</a>
+          <ul>
+            <li><a href="our-story.html">Our Story</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="mission.html">Mission</a></li>
+          </ul>
+        </li>
+        <li><a href="#contact" class="button" style="padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.2);">Contact</a>
+          <ul>
+            <li><a href="get-in-touch.html">Get in Touch</a></li>
+            <li><a href="contact-us.html">Contact Us</a></li>
+            <li><a href="locations.html">Locations</a></li>
+            <li><a href="support.html">Support</a></li>
+          </ul>
+        </li>
+        <li><a href="apply-now.html" class="button" style="padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.2);">Apply Now</a></li>
+        <li><a href="#study" class="button" style="padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.2);">Study Destination</a>
+          <ul>
+            <li><a href="usa.html">USA</a></li>
+            <li><a href="canada.html">Canada</a></li>
+            <li><a href="uk.html">UK</a></li>
+            <li><a href="australia.html">Australia</a></li>
+            <li><a href="malaysia.html">Malaysia</a></li>
+            <li><a href="china.html">China</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="container" id="top">
+  <section aria-label="Admin panel">
+    <h2 style="margin: 0 0 8px;">Admin Panel</h2>
+    <p style="color:var(--muted); margin: 0 0 16px;">Manage users, applications, and site content.</p>
+    <div class="grid">
+      <article class="card" aria-label="User Management">
+        <h3>User Management</h3>
+        <p>View and manage registered users.</p>
+        <button onclick="showUsers()" class="button" style="margin-top: 10px;">View Users</button>
+      </article>
+      <article class="card" aria-label="Application Management">
+        <h3>Application Management</h3>
+        <p>Review and process visa applications.</p>
+        <button onclick="showApplications()" class="button" style="margin-top: 10px;">View Applications</button>
+      </article>
+      <article class="card" aria-label="Content Management">
+        <h3>Content Management</h3>
+        <p>Update website content and announcements.</p>
+        <a href="#" class="button" style="margin-top: 10px;">Edit Content</a>
+      </article>
+      <article class="card" aria-label="Reports">
+        <h3>Reports</h3>
+        <p>Generate reports on users and applications.</p>
+        <a href="#" class="button" style="margin-top: 10px;">View Reports</a>
+      </article>
+    </div>
+
+    <div id="usersTable" style="display: none; margin-top: 40px;">
+      <h3>Registered Users</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="usersList">
+        </tbody>
+      </table>
+    </div>
+
+    <div id="applicationsTable" style="display: none; margin-top: 40px;">
+      <h3>Visa Applications</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Country</th>
+            <th>Course</th>
+            <th>Documents</th>
+            <th>Status</th>
+            <th>Submitted</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="applicationsList">
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer role="contentinfo" aria-label="Site footer" style="display: flex; flex-direction: column; justify-content: center; align-items: center; flex-wrap: wrap; padding: 40px 0; color: #aab3c5; font-size: .9rem; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 40px; text-align: center;">
+  <div>
+    <img src="logo.pnj.png" alt="Logo" style="width: 60px; height: 60px;">
+    <h3>WorldLink Migration &amp; Visa Consultancy</h3>
+    <p>337, Alokar More, New Market Road,<br>Sostitola, Boalia, Rajshahi, Bangladesh</p>
+    <p>📞 +6011 2432 8920</p>
+    <div style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;">
+      <a href="https://wa.me/601124328920" target="_blank" style="padding: 8px 12px; background: #6c8cff; color: white; text-decoration: none; border-radius: 4px;">WhatsApp</a>
+      <a href="mailto:enuires.worldlinkmigration@gmail.com" style="padding: 8px 12px; background: #6c8cff; color: white; text-decoration: none; border-radius: 4px;">Email</a>
+    </div>
+  </div>
+  <div style="width: 100%; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08);">
+    <p>Copyright © 2025 WorldLink Migration & Visa Consultancy. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="auth.js"></script>
+<script>
+  function toggleNav() {
+    const navUl = document.querySelector('nav ul');
+    navUl.classList.toggle('show');
+  }
+
+  // Protect admin page
+  protectAdminPage();
+
+  function showUsers() {
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const tbody = document.getElementById('usersList');
+    tbody.innerHTML = '';
+    users.forEach(user => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${user.username}</td>
+        <td>${user.email}</td>
+        <td>${user.role}</td>
+        <td><button onclick="deleteUser('${user.username}')" class="button">Delete</button></td>
+      `;
+      tbody.appendChild(row);
+    });
+    document.getElementById('usersTable').style.display = 'block';
+  }
+
+  function deleteUser(username) {
+    if (confirm(`Delete user ${username}?`)) {
+      const users = JSON.parse(localStorage.getItem('users'));
+      const filtered = users.filter(u => u.username !== username);
+      localStorage.setItem('users', JSON.stringify(filtered));
+      showUsers();
+    }
+  }
+
+  async function showApplications() {
+    try {
+      const response = await fetch('http://localhost:8000/get-applications');
+      const applications = await response.json();
+
+      const tbody = document.getElementById('applicationsList');
+      tbody.innerHTML = '';
+      applications.forEach((app, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${app.userId}</td>
+          <td>${app.firstName} ${app.surname}</td>
+          <td>${app.country}</td>
+          <td>${app.interestedCourse}</td>
+          <td>
+            ${app.certificateTranscript ? `<a href="http://localhost:8000/download/${app.certificateTranscript}" target="_blank" download>Certificate</a><br>` : ''}
+            ${app.passportFirstPage ? `<a href="http://localhost:8000/download/${app.passportFirstPage}" target="_blank" download>Passport</a><br>` : ''}
+            ${app.photo ? `<a href="http://localhost:8000/download/${app.photo}" target="_blank" download>Photo</a>` : ''}
+          </td>
+          <td>${app.status}</td>
+          <td>${new Date(app.submittedAt).toLocaleDateString()}</td>
+          <td>
+            <button onclick="updateStatus(${index}, 'approved')" class="button" style="margin-right: 5px;">Approve</button>
+            <button onclick="updateStatus(${index}, 'rejected')" class="button" style="margin-right: 5px;">Reject</button>
+            <button onclick="emailApplication(${index})" class="button">Email</button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    } catch (error) {
+      console.error('Error loading applications:', error);
+      // Fallback to localStorage
+      const applications = JSON.parse(localStorage.getItem('applications') || '[]');
+      const tbody = document.getElementById('applicationsList');
+      tbody.innerHTML = '';
+      applications.forEach((app, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${app.userId}</td>
+          <td>${app.firstName} ${app.surname}</td>
+          <td>${app.country}</td>
+          <td>${app.interestedCourse}</td>
+          <td>
+            ${app.certificateTranscript ? `<a href="#" onclick="downloadDoc('${app.certificateTranscript}')">Certificate</a><br>` : ''}
+            ${app.passportFirstPage ? `<a href="#" onclick="downloadDoc('${app.passportFirstPage}')">Passport</a><br>` : ''}
+            ${app.photo ? `<a href="#" onclick="downloadDoc('${app.photo}')">Photo</a>` : ''}
+          </td>
+          <td>${app.status}</td>
+          <td>${new Date(app.submittedAt).toLocaleDateString()}</td>
+          <td>
+            <button onclick="updateStatus(${index}, 'approved')" class="button" style="margin-right: 5px;">Approve</button>
+            <button onclick="updateStatus(${index}, 'rejected')" class="button" style="margin-right: 5px;">Reject</button>
+            <button onclick="emailApplication(${index})" class="button">Email</button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+    document.getElementById('applicationsTable').style.display = 'block';
+  }
+
+  async function updateStatus(index, status) {
+    try {
+      const response = await fetch(`http://localhost:8000/update-status/${index}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ status: status })
+      });
+      const result = await response.json();
+      if (result.success) {
+        showApplications();
+      } else {
+        alert('Error updating status: ' + result.message);
+      }
+    } catch (error) {
+      console.error('Error updating status:', error);
+      // Fallback to localStorage
+      const applications = JSON.parse(localStorage.getItem('applications') || '[]');
+      applications[index].status = status;
+      localStorage.setItem('applications', JSON.stringify(applications));
+      showApplications();
+    }
+  }
+
+  function downloadDoc(filename) {
+    // In this client-side only implementation, files are not actually stored
+    // In a real application, files would be uploaded to a server/cloud storage
+    alert(`File download not available in this demo.\n\nIn a real application, "${filename}" would be downloaded from server storage.\n\nCurrent limitation: Files are only stored as names in localStorage, not the actual file data.`);
+  }
+
+  function emailApplication(index) {
+    const applications = JSON.parse(localStorage.getItem('applications') || '[]');
+    const app = applications[index];
+
+    const subject = encodeURIComponent(`Visa Application from ${app.firstName} ${app.surname}`);
+    const body = encodeURIComponent(`
+Visa Application Details:
+
+Name: ${app.firstName} ${app.surname}
+Date of Birth: ${app.dob}
+Gender: ${app.gender}
+Qualification: ${app.qualification}
+English Proficiency: ${app.englishProficiency}
+Interested Course: ${app.interestedCourse}
+Country: ${app.country}
+University: ${app.university}
+WhatsApp: ${app.whatsapp}
+Status: ${app.status}
+Submitted: ${new Date(app.submittedAt).toLocaleString()}
+
+Documents:
+- Certificate/Transcript: ${app.certificateTranscript || 'Not provided'}
+- Passport First Page: ${app.passportFirstPage || 'Not provided'}
+- Photo: ${app.photo || 'Not provided'}
+
+User ID: ${app.userId}
+    `);
+
+    const emailUrl = `mailto:enuires.worldlinkmigration@gmail.com?subject=${subject}&body=${body}`;
+    window.open(emailUrl);
+  }
+</script>
+</body>
+</html>
